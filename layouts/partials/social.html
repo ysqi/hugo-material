@@ -1,11 +1,11 @@
 
-<!-- Social links in footer -->
-{{if $.Site.Social }}
+<!-- Social links in footer --> 
+{{if $.Site.Params.social }}
   <div class="md-footer-social">
     {{ $path := "ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" }}
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/{{ $path }}">
-    {{range $.Site.Social}}
+    {{range $.Site.Params.social}}
       <a href="{{ .link }}" class="md-footer-social__link
             fa fa-{{ .type }}"></a>
     {{end}}
