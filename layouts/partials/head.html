@@ -5,7 +5,9 @@
 {{else if in $platform "gitlab" }}
   {{ $.Scratch.Add "platfrom" "gitlab" }}   
 {{else if in $platform "bitbucket" }}
-  {{ $.Scratch.Add "platfrom" "bitbucket" }}          
+  {{ $.Scratch.Add "platfrom" "bitbucket" }}    
+{{else if in $platform "gitee" }}
+{{ $.Scratch.Add "platfrom" "gitee" }}       
 {{end}}
 
 <!DOCTYPE html>
