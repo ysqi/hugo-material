@@ -7,8 +7,7 @@
  
 <!-- Main navigation item with nested items -->
 {{with $nav_item}}
-{{ $isActive  :=or ($.IsMenuCurrent "main"  .) ( $.HasMenuCurrent "main" .)}} 
-
+{{ $isActive  :=or ($.IsMenuCurrent "docs"  .) ( $.HasMenuCurrent "docs" .)}}  
 {{if .HasChildren}}
     <li class="md-nav__item {{if $isActive}}md-nav__item--active{{end}}  md-nav__item--nested">
         <!-- Active checkbox expands items contained within nested section -->  

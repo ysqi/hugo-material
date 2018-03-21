@@ -13,7 +13,7 @@
           <img src="{{$.Site.Params.logo | absURL}}"  width="24" height="24" />
         {{end}}
       </span>
-      {{ $.Site.Title}}22
+      {{ $.Site.Title}}
     </label>
   
     <!-- Repository containing source -->
@@ -22,11 +22,10 @@
           {{ partial "source" .}} 
       </div>
     {{end}}
-  
     <!-- Render item list -->
     <ul class="md-nav__list" data-md-scrollfix>
 
-{{ range $index, $nav := $.Site.Menus.main.ByWeight }}
+{{ range $index, $nav := $.Site.Menus.docs.ByWeight }}
     {{$.Scratch.Set "nav_level" 1}}
     {{$.Scratch.Set "nav" $nav}}
     {{$.Scratch.Set "nav_path" (printf "nav-%d" $index)}}
