@@ -17,9 +17,13 @@
   </li>
 {{else}}    
     <li class="md-tabs__item"> 
+        {{if .URL}}
         <a href="{{ .URL }}" title="{{ .Name }}" class="md-tabs__link  {{if $isCurrent}}md-tabs__link--active{{end}}">
           {{ .Name }}
         </a> 
+        {{else}}
+         <span style="color: hsla(0,0%,100%,.3);">{{ .Name }}</span>
+        {{end}}
     </li> 
 {{end}} 
 {{end}}

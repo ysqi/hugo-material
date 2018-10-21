@@ -55,8 +55,8 @@
       <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         {{ with .Site.Params.copyright }}
-          <div class="md-footer-copyright__highlight">
-            &copy; {{ now.Format "2006" }} {{ . }}
+          <div class="md-footer-copyright__highlight" style="color:hsla(0,0%,100%,.3);">
+            &copy; {{ now.Format "2006" }} {{ . | safeHTML}}
           </div>
         {{end}}
         powered by
@@ -64,6 +64,7 @@
         and
         <a href="https://squidfunk.github.io/mkdocs-material/"  rel="nofollow">
           Material for Hugo</a>
+        ，<a href="/about.html"   rel="nofollow">关于我们</a>
       </div>
 
       <!-- Social links --> 
