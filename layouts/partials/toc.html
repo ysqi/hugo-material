@@ -6,7 +6,7 @@
 {{ if $has_headers  }}
 <nav class="md-nav md-nav--secondary">
   <!-- TOC header -->
-  <h4 class="md-nav__title" for="toc">Table of Contents</h4>
+  <h4 class="md-nav__title" for="toc">目录</h4>
   <ul class="md-nav__list" data-md-scrollfix> 
     {{ range $i, $header := $headers }}
       {{ $headerLevel := index (findRE "[1-4]" . 1) 0 }}

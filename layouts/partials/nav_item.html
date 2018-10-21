@@ -16,7 +16,7 @@
 
         <!-- Expand active pages -->
         <label class="md-nav__link" for="{{$path}}">
-        {{ .Name }} 
+            <a href="{{.URL}}" title="{{ .Name}}">{{ .Name }}
         </label>
         <nav class="md-nav" data-md-component="collapsible" data-md-level="{{$level}}">
         <label class="md-nav__title" for="{{$path}}">
