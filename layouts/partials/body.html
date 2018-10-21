@@ -19,7 +19,7 @@
     <h2 id="__source">修改历史</h2>
     <div>
         <ul>
-            {{range index .Site.Data.commits "./content/basic/ethereum/gas.md"}}
+            {{range index .Site.Data.commits (print "./content/" $.Page.File.Path) }}
             <li><code><a href="{{$.Site.Params.repo_url}}/commit/{{.hash}}"   rel="nofollow">{{substr .hash 0 7}}</a></code>
                 <span style="margin: 0 .29412em;" title="提交时间">{{dateFormat "2006-01-02 13:04:05" .date}}</span>
                 <span style="margin: 0 .29412em;"><a href="http://github.com/{{.name}}" title="提交人" rel="nofollow">{{.email}}</a></span>
