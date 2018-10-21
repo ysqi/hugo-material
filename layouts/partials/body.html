@@ -2,6 +2,7 @@
     <a href="https://github.com/{{.Site.Params.repo_name}}/edit/master/content/{{$.Page.File.Path}}" title="" class="md-icon md-content__icon">&#xE3C9;</a>
     <h1>{{ .Title }} {{ if .IsDraft }} (Draft){{ end }}</h1>
     {{ (replace .Content "<div class=\"highlight\"" "<div class=\"codehilite\"") | safeHTML }} 
+    {{if not .IsHome}}
     <!-- 列表页显示 -->
     <div>
         {{if .Data.Pages}}
@@ -14,12 +15,26 @@
          </ul> 
          {{end}}
     </div>
-    <h2 id="__source">源文件</h2>
-    <div> 
-    {{ $repo_type := $.Scratch.Get "platfrom" }}
-    <a href="https://{{$repo_type}}.com/{{.Site.Params.repo_name}}/blob/master/content/{{$.Page.File.Path}}" title="{{$repo_type}} source file" class="md-source-file"> 查看源文件 </a> 
-    <a href="https://{{$repo_type}}.com/{{.Site.Params.repo_name}}/edit/master/content/{{$.Page.File.Path}}" title="{{$repo_type}} source file" class="md-source-file"> 编辑源文件</a> 
-    </div>  
+    {{end}}
+    <h2 id="__source">修改历史</h2>
+    <div>
+        <ul>
+            {{range index .Site.Data.commits "./content/basic/ethereum/gas.md"}}
+            <li><code><a href="{{$.Site.Params.repo_url}}/commit/{{.hash}}"   rel="nofollow">{{substr .hash 0 7}}</a></code>
+                <span style="margin: 0 .29412em;" title="提交时间">{{dateFormat "2006-01-02 13:04:05" .date}}</span>
+                <span style="margin: 0 .29412em;"><a href="http://github.com/{{.name}}" title="提交人" rel="nofollow">{{.email}}</a></span>
+                ：{{.message}}
+            </li>
+            {{end}}
+        </ul>
+        {{ $repo_type := $.Scratch.Get "platfrom" }}
+        <blockquote>
+            <p>最后更新时间：{{.Lastmod.Format "2006-01-02 13:04:05"}}，这是一篇任何人都可以协作参与的文章，
+                <a href="https://{{$repo_type}}.com/{{.Site.Params.repo_name}}/edit/master/content/{{$.Page.File.Path}}"  rel="nofollow">
+                    我想反馈问题/修改</a>。
+            </p>
+        </blockquote>
+    </div>
     {{if $.Site.Params.theme.future.disqus }}
     <h2 id="__comments">comments</h2>
     {{end}}
