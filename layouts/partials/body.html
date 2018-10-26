@@ -32,14 +32,23 @@
 
                         {{ $repo_type := $.Scratch.Get "platfrom" }}
                                     最后更新时间：{{.Lastmod.Format "2006-01-02 15:04:05"}}，这是一篇任何人都可以协作参与的文章，
-                                    <a href="https://{{$repo_type}}.com/{{.Site.Params.repo_name}}/edit/master/content/{{$.Page.File.Path}}"  rel="nofollow">
-                                        我想反馈问题/修改</a>。
+                                    <a href="https://{{$repo_type}}.com/{{.Site.Params.repo_name}}/issues"  rel="nofollow">
+                                        点击反馈问题</a>。
                             </li>
             {{range index .Site.Data.commits (print "./content/" $.Page.File.Path) }}
-            <li><a href="{{$.Site.Params.repo_url}}/commit/{{.hash}}"   rel="nofollow">{{substr .hash 0 7}}:</a>
-                <span style="margin: 0 .29412em;" title="提交时间">{{dateFormat "2006-01-02" .date}}</span>
-                <span style="margin: 0 .29412em;"><a href="http://github.com/{{.name}}" title="提交人" rel="nofollow">{{.email}}</a></span>
-                ：{{.message}}
+            <li>
+                <span title="提交时间">{{dateFormat "2006-01-02" .date}}</span> 
+                <span >
+                        {{if index $.Site.Data.contributor .email}}
+                            {{with index $.Site.Data.contributor .email }}
+                                <a href="{{.site}}" title="提交人" rel="nofollow">{{.name}}</a>
+                            {{end}}
+                        {{else}}    
+                            {{.email}}
+                        {{end}}
+                </span>
+                <span>提交修改-<a href="{{$.Site.Params.repo_url}}/commit/{{.hash}}"   rel="nofollow">Commit:{{substr .hash 0 7}}</a></span>
+                <span>->{{.message}}</span>
             </li>
             {{end}}
            
