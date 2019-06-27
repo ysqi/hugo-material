@@ -25,6 +25,7 @@
          {{end}}
     </div>
     {{end}}
+    {{if $.Site.Params.enableGitInfo}}
     <div class="footcommits">
         <hr>
         <ol>
@@ -58,6 +59,7 @@
             </p>
         </blockquote>
     </div>
+    {{end}}
     {{if $.Site.Params.theme.future.disqus }}
     <h2 id="__comments">comments</h2>
     {{end}}
