@@ -64,8 +64,8 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script> -->
     <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
-   
-{{if  .Params.mathjax}}
+    
+{{if  .Site.Params.mathjax}}
  /* https://www.mathjax.org */
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -79,7 +79,7 @@
     "HTML-CSS": { fonts: ["TeX"] }
   });
 </script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script> 
+  <script src='https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js' async></script> 
 {{end}}
 
   </body>
